@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-gem 'rake'
-gem 'reek'
-gem 'rspec'
-gem 'rubocop'
-gem 'simplecov', require: false, group: :test
-gem 'simplecov-console', require: false, group: :test
+group :test do
+  gem 'rspec'
+  gem 'rubocop'
+  gem 'simplecov'
+  gem 'simplecov-console'
+end
