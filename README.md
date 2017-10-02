@@ -1,5 +1,6 @@
 # Bank (tech test)
 
+A collection of simple ruby classes to log transactions and display a statement.
 ___
 ## Usage
 
