@@ -13,5 +13,6 @@ SimpleCov.start
 RSpec.configure do |config|
   config.after(:suite) do
     system('rubocop .')
+    system('flog ./lib/*')
   end
 end
