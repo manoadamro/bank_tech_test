@@ -3,7 +3,44 @@
 ___
 ## Usage
 
-  -  navigate to directory and run ```ruby app.rb``` in terminal:
+  - To run example:
+    -  navigate to directory and run ```ruby app.rb``` in terminal:
+
+  - To use:
+
+    - navigate to directory and run ```irb``` in terminal:
+    - run:
+    ```ruby
+      require_relative('./lib/account')
+      require_relative('./lib/transaction')
+      require_relative('./lib/formatter')
+    ```
+
+    - create an account:
+    ```ruby
+      account = Account.new(Transaction, Formatter)
+    ```
+
+    - desposit money:
+    ```ruby
+      # deposits 100 on 10/10/1970
+      account.transaction(100, '01/01/1970')
+    ```
+
+    - withdraw money:
+    ```ruby
+      # withdraws 50 on 10/10/1970
+      account.transaction(-50, '02/01/1970')
+    ```
+
+    - show transaction log:
+    ```ruby
+      # shows transaction log, newest first
+      account.show_log()
+      # ||date      ||credit    ||debit     ||balance   ||
+      # ||01/01/1970||-50       ||          ||50        ||
+      # ||01/01/1970||100       ||          ||100       ||
+    ```
 
 ___
 ## Classes:
@@ -59,7 +96,7 @@ ___
   - Show account statement.
     - Data stored in memory.
 
-    
+
 #### Example:
   - Client deposits 1000 on 10-01-2012
   - Client deposits 2000 on 13-01-2012
