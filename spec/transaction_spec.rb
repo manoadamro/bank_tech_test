@@ -1,3 +1,4 @@
+require_relative('../lib/transaction.rb')
 
 describe 'Transaction' do
   describe '#new' do

@@ -1,3 +1,4 @@
+require_relative('../lib/formatter.rb')
 
 describe 'Formatter' do
   describe '#new' do

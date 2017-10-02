@@ -1,3 +1,4 @@
+require_relative('../lib/account.rb')
 
 describe 'Account' do
   describe '#new' do
