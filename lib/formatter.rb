@@ -4,11 +4,9 @@ class Formatter
   def initalize; end
 
   def show_log(log)
-    output = log_headings
-    log.reverse!.each do |entry|
-      output += format_log_entry(entry)
-    end
-    puts output
+    headings = log_headings
+    table = format_table(log).join('')
+    puts headings << table
   end
 
   def confirm_transaction(transaction)
@@ -23,6 +21,17 @@ class Formatter
   def transaction_type(amount)
     return 'deposit' if amount >= 0
     'withdrawal'
+  end
+
+  def credit_debit(amount)
+    return amount.to_s, '' if amount >= 0
+    ['', amount.abs.to_s]
+  end
+
+  def format_table(log)
+    log.reverse.collect! do |entry|
+      format_log_entry(entry)
+    end
   end
 
   def format_column(name, width = 10)
@@ -41,13 +50,8 @@ class Formatter
     format_row('date', 'credit', 'debit', 'balance')
   end
 
-  def parse_amount(amount)
-    return amount.to_s, '' if amount >= 0
-    ['', amount.abs.to_s]
-  end
-
   def format_log_entry(entry)
-    credit, debit = parse_amount(entry.amount)
+    credit, debit = credit_debit(entry.amount)
     format_row(entry.date, credit, debit, entry.balance)
   end
 end
