@@ -26,7 +26,7 @@ describe 'Formatter' do
 
       log = [tr1, tr2, tr3]
       output = "||date      ||credit    ||debit     ||balance   ||\n" \
-               "||3/2/3     ||          ||-50       ||250       ||\n" \
+               "||3/2/3     ||          ||50        ||250       ||\n" \
                "||2/2/3     ||200       ||          ||300       ||\n" \
                "||1/2/3     ||100       ||          ||100       ||\n"
       expect { subject.show_log(log) }.to output(output).to_stdout

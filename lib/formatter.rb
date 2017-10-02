@@ -43,7 +43,7 @@ class Formatter
 
   def parse_amount(amount)
     return amount.to_s, '' if amount >= 0
-    ['', amount.to_s]
+    ['', amount.abs.to_s]
   end
 
   def format_log_entry(entry)
