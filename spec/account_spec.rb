@@ -1,7 +1,6 @@
 require_relative('../lib/account.rb')
 
 describe 'Account' do
-
   let(:amount) { 420 }
   let(:date) { '4/20/69' }
 
@@ -63,8 +62,8 @@ describe 'Account' do
     end
 
     it 'calculates new balance correctly' do
-      expect(transaction_klass).to receive(:new).with(100, '1/2/3', 100)
-      subject.transaction(100, '1/2/3')
+      expect(transaction_klass).to receive(:new).with(amount, date, amount)
+      subject.transaction(amount, date)
     end
   end
 
@@ -80,7 +79,6 @@ describe 'Account' do
   end
 
   context '#balance' do
-
     it 'responds to #balance' do
       expect(subject).to respond_to(:balance).with(0).arguments
     end
@@ -90,9 +88,9 @@ describe 'Account' do
     end
 
     it 'returns balance from last log entry' do
-      allow(transaction).to receive(:balance).and_return(100)
+      allow(transaction).to receive(:balance).and_return(amount)
       subject.transaction_log << transaction
-      expect(subject.balance).to eq(100)
+      expect(subject.balance).to eq(amount)
     end
   end
 end

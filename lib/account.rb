@@ -22,7 +22,7 @@ class Account
 
   def balance
     if transaction_log.empty?
-      return 0
+      0
     else
       transaction_log.last.balance
     end

@@ -1,5 +1,5 @@
 
-#in lib/transaction.rb
+# in lib/transaction.rb
 class Transaction
   attr_reader :amount, :date, :balance
 
@@ -8,5 +8,4 @@ class Transaction
     @date = date
     @balance = balance
   end
-
 end

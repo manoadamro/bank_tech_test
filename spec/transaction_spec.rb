@@ -2,7 +2,6 @@ require_relative('../lib/transaction.rb')
 
 describe 'Transaction' do
   describe '#new' do
-
     let(:amount) { 420 }
     let(:date) { '4/20/69' }
     let(:balance) { 420 }
@@ -37,6 +36,5 @@ describe 'Transaction' do
     it 'sets balance' do
       expect(subject.balance).to eq(balance)
     end
-
   end
 end
