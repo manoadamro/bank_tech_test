@@ -25,7 +25,11 @@ describe 'Formatter' do
       allow(tr3).to receive_messages(amount: -50, date: '3/2/3', balance: 250)
 
       log = [tr1, tr2, tr3]
-      expect { subject.show_log(log) }.to output("\n").to_stdout
+      output = "||date    ||credit  ||debit   ||balance ||\n" \
+               "||1/2/3   ||100     ||        ||100     ||\n" \
+               "||2/2/3   ||200     ||        ||300     ||\n" \
+               "||3/2/3   ||        ||-50     ||250     ||\n"
+      expect { subject.show_log(log) }.to output(output).to_stdout
     end
   end
 
