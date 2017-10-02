@@ -89,7 +89,7 @@ describe 'Account' do
       expect(subject.balance).to eq(0)
     end
 
-    it 'returns correct balance' do
+    it 'returns balance from last log entry' do
       allow(transaction).to receive(:balance).and_return(100)
       subject.transaction_log << transaction
       expect(subject.balance).to eq(100)
