@@ -25,7 +25,7 @@ describe 'Formatter' do
       allow(tr3).to receive_messages(amount: -50, date: '3/2/3', balance: 250)
 
       log = [tr1, tr2, tr3]
-      expect { subject.show_log(log) }.to output('').to_stdout
+      expect { subject.show_log(log) }.to output("\n").to_stdout
     end
   end
 
@@ -36,12 +36,16 @@ describe 'Formatter' do
 
     it 'outputs deposit to stdout' do
       allow(tr1).to receive_messages(amount: 100, date: '1/2/3', balance: 100)
-      expect { subject.confirm_transaction(tr1) }.to output('').to_stdout
+
+      output = "confirmed deposit of 100.\nnew balance: 100\n"
+      expect { subject.confirm_transaction(tr1) }.to output(output).to_stdout
     end
 
-    it 'outputs deposit to stdout' do
+    it 'outputs withdrawal to stdout' do
       allow(tr1).to receive_messages(amount: -50, date: '1/2/3', balance: 50)
-      expect { subject.confirm_transaction(tr1) }.to output('').to_stdout
+
+      output = "confirmed withdrawal of -50.\nnew balance: 50\n"
+      expect { subject.confirm_transaction(tr1) }.to output(output).to_stdout
     end
   end
 end

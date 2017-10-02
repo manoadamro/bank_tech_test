@@ -170,10 +170,14 @@
         null,
         1,
         1,
+        null,
+        1,
         2,
         null,
         null,
         1,
+        1,
+        null,
         1,
         2,
         null,
@@ -187,8 +191,30 @@
         1,
         null,
         1,
+        1,
+        1,
+        3,
         null,
         1,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        null,
+        1,
+        2,
+        1,
+        null,
+        null,
+        1,
+        3,
+        null,
         null
       ],
       "/Users/adamromano/Documents/GitHub/bank_tech_test/spec/transaction_spec.rb": [
@@ -247,6 +273,6 @@
         null
       ]
     },
-    "timestamp": 1506952217
+    "timestamp": 1506953314
   }
 }
