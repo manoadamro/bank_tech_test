@@ -25,10 +25,10 @@ describe 'Formatter' do
       allow(tr3).to receive_messages(amount: -50, date: '3/2/3', balance: 250)
 
       log = [tr1, tr2, tr3]
-      output = "||date    ||credit  ||debit   ||balance ||\n" \
-               "||1/2/3   ||100     ||        ||100     ||\n" \
-               "||2/2/3   ||200     ||        ||300     ||\n" \
-               "||3/2/3   ||        ||-50     ||250     ||\n"
+      output = "||date      ||credit    ||debit     ||balance   ||\n" \
+               "||3/2/3     ||          ||-50       ||250       ||\n" \
+               "||2/2/3     ||200       ||          ||300       ||\n" \
+               "||1/2/3     ||100       ||          ||100       ||\n"
       expect { subject.show_log(log) }.to output(output).to_stdout
     end
   end
@@ -41,14 +41,14 @@ describe 'Formatter' do
     it 'outputs deposit to stdout' do
       allow(tr1).to receive_messages(amount: 100, date: '1/2/3', balance: 100)
 
-      output = "confirmed deposit of 100.\nnew balance: 100\n"
+      output = "confirmed deposit of 100.\nnew balance: 100\n\n"
       expect { subject.confirm_transaction(tr1) }.to output(output).to_stdout
     end
 
     it 'outputs withdrawal to stdout' do
       allow(tr1).to receive_messages(amount: -50, date: '1/2/3', balance: 50)
 
-      output = "confirmed withdrawal of -50.\nnew balance: 50\n"
+      output = "confirmed withdrawal of -50.\nnew balance: 50\n\n"
       expect { subject.confirm_transaction(tr1) }.to output(output).to_stdout
     end
   end

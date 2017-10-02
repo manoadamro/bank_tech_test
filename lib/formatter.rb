@@ -5,7 +5,7 @@ class Formatter
 
   def show_log(log)
     output = log_headings
-    log.each do |entry|
+    log.reverse!.each do |entry|
       output += format_log_entry(entry)
     end
     puts output
@@ -15,7 +15,7 @@ class Formatter
     type = transaction_type(transaction.amount)
     amount = transaction.amount
     balance = transaction.balance
-    puts "confirmed #{type} of #{amount}.\nnew balance: #{balance}"
+    puts "confirmed #{type} of #{amount}.\nnew balance: #{balance}\n\n"
   end
 
   private
@@ -25,7 +25,7 @@ class Formatter
     'withdrawal'
   end
 
-  def format_column(name, width = 8)
+  def format_column(name, width = 10)
     format("%-#{width}s||", name)
   end
 
