@@ -24,14 +24,16 @@ ___
 
     - desposit money:
     ```ruby
-      # deposits 100 on 10/10/1970
       account.transaction(100, '01/01/1970')
+      # confirmed deposit of 100.
+      # new balance: 100
     ```
 
     - withdraw money:
     ```ruby
-      # withdraws 50 on 10/10/1970
       account.transaction(-50, '02/01/1970')
+      # confirmed withdrawal of 50.
+      # new balance: 50
     ```
 
     - show transaction log:
