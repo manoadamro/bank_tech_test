@@ -2,6 +2,9 @@ require_relative('../lib/account.rb')
 
 describe 'Account' do
 
+  let(:amount) { 420 }
+  let(:date) { '4/20/69' }
+
   let(:formatter) { double(:formatter) }
   let(:formatter_klass) { double(:formatter_klass) }
 
@@ -21,7 +24,6 @@ describe 'Account' do
   end
 
   context '#new' do
-
     it 'responds to #new with one arguement' do
       expect(account_klass).to respond_to(:new).with(2).arguments
     end
@@ -31,7 +33,7 @@ describe 'Account' do
       account_klass.new(transaction_klass, formatter_klass)
     end
 
-    it 'allows access to transaction_log'do
+    it 'allows access to transaction_log' do
       expect(subject).to respond_to(:transaction_log)
     end
 
@@ -41,36 +43,39 @@ describe 'Account' do
   end
 
   context '#transaction' do
-
     it 'responds to #transaction with two arguments' do
       expect(subject).to respond_to(:transaction).with(2).arguments
     end
 
     it 'creates a transaction object' do
       expect(transaction_klass).to receive(:new).exactly(1).times
-      subject.transaction('amount', 'date')
+      subject.transaction(amount, date)
     end
 
     it 'adds date to log' do
-      subject.transaction('amount', 'date')
+      subject.transaction(amount, date)
       expect(subject.transaction_log.length).to eq(1)
     end
 
     it 'calls formatter.confirm_transaction' do
       expect(formatter).to receive(:confirm_transaction)
-      subject.transaction('amount', 'date')
+      subject.transaction(amount, date)
+    end
+
+    it 'calculates new balance correctly' do
+      expect(transaction_klass).to receive(:new).with(100, '1/2/3', 100)
+      subject.transaction(100, '1/2/3')
     end
   end
 
   context '#show_log' do
-
     it 'responds to #show_log' do
       expect(subject).to respond_to(:show_log).with(0).arguments
     end
 
     it 'calls formatter.show_log' do
       expect(formatter).to receive(:show_log)
-      subject.show_log()
+      subject.show_log
     end
   end
 end
