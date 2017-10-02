@@ -20,7 +20,6 @@ class Account
     @formatter.show_log(@transaction_log)
   end
 
-  private
   def balance
     if transaction_log.empty?
       return 0

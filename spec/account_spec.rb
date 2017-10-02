@@ -78,4 +78,21 @@ describe 'Account' do
       subject.show_log
     end
   end
+
+  context '#balance' do
+
+    it 'responds to #balance' do
+      expect(subject).to respond_to(:balance).with(0).arguments
+    end
+
+    it 'balance starts at 0' do
+      expect(subject.balance).to eq(0)
+    end
+
+    it 'returns correct balance' do
+      allow(transaction).to receive(:balance).and_return(100)
+      subject.transaction_log << transaction
+      expect(subject.balance).to eq(100)
+    end
+  end
 end

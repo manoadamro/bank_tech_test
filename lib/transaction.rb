@@ -1,7 +1,7 @@
 
 #in lib/transaction.rb
 class Transaction
-  attr_accessor :amount, :date, :balance
+  attr_reader :amount, :date, :balance
 
   def initialize(amount, date, balance)
     @amount = amount
