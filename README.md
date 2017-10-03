@@ -13,13 +13,11 @@ ___
     - run:
     ```ruby
       require_relative('./lib/account')
-      require_relative('./lib/transaction')
-      require_relative('./lib/formatter')
     ```
 
     - create an account:
     ```ruby
-      account = Account.new(Transaction, Formatter)
+      account = Account.new
     ```
 
     - desposit money:
@@ -36,10 +34,9 @@ ___
       # new balance: 50
     ```
 
-    - show transaction log:
+    - show statement:
     ```ruby
-      # shows transaction log, newest first
-      account.show_log()
+      account.show_statement()
       # ||date      ||credit    ||debit     ||balance   ||
       # ||01/01/1970||-50       ||          ||50        ||
       # ||01/01/1970||100       ||          ||100       ||
@@ -72,7 +69,8 @@ ___
 
 
   - _Methods:_
-    - None
+    - values
+      - returns an array containing [date, credit, debit, balance]
 
 
 ##### Formatter:
@@ -82,13 +80,9 @@ ___
 
 
   - _Methods:_
-    - show_log:
+    - print_statement:
       - log: list of transaction objects
       - outputs log entries in table format
-      - no return behaviour
-    - confirm_transaction:
-      - transaction: a object
-      - outputs confirmation of transaction and new balance
       - no return behaviour
 
 ___
